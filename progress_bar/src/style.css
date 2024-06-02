@@ -6,3 +6,71 @@
     --secondary: #2b2234;
     --accent: #463854;
 }
+
+* {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+h1, h2, h3 {
+    /*Extend page block-size to better showcase page navigation*/
+    margin-block-start: 20vh;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 175%;
+}
+
+main {
+    display: flex;
+}
+
+nav {
+    block-size: 100vh;
+    min-inline-size: 170px;
+    inline-size: 15%;
+    margin-inline-end: 5%;
+
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+nav ul {
+    position: fixed;
+    list-style-type: none;
+    padding: 5px;
+    border: 2px solid var(--secondary);
+    border-radius: 2rem;
+}
+
+nav a {
+    background-color: var(--secondary);
+    text-decoration: none;
+    display: block;
+}
+
+nav li {
+    background-color: var(--secondary);
+    padding: 0.5em 1ch;
+    margin: 1em 1ch;
+    border-radius: 1rem;
+}
+
+section {
+    margin-inline-end: 5%;
+}
