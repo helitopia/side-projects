@@ -59,9 +59,9 @@ nav ul {
 }
 
 nav a {
-    background-color: var(--secondary);
+    background-color: transparent;
     text-decoration: none;
-    display: block;
+    display: none;
 }
 
 nav li {
@@ -69,6 +69,14 @@ nav li {
     padding: 0.5em 1ch;
     margin: 1em 1ch;
     border-radius: 1rem;
+}
+
+nav ul:hover a {
+    display: block;
+}
+
+nav li:hover{
+    background-color: var(--accent);
 }
 
 section {
