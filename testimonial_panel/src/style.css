@@ -35,14 +35,14 @@ body {
     }
 }
 
-#testimonial {
+#testimonial-container {
     display         : flex;
     flex-direction  : column;
     justify-content : center;
     align-items     : center;
 }
 
-#description {
+#testimonial {
     line-height : 2em;
     text-align  : center;
 }
