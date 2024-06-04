@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+* {
+    font-family         : Montserrat, sans-serif;
+    --backdrop-color    : #eee;
+    --testimonial-color : #fff;
+}
+
+body {
+    background-color : var(--backdrop-color);
+    display          : flex;
+    height           : 100vh;
+    align-content    : center;
+    align-items      : center;
+    justify-content  : center;
+}
+
+#content {
+    width            : 50vw;
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+
+    background-color : var(--testimonial-color);
+    border           : solid transparent;
+    border-radius    : 2em;
+    padding          : 3em;
+
+    & > i:first-child {
+        margin-inline-end : 3em;
+    }
+
+    & > i:last-child {
+        margin-inline-start : 3em;
+    }
+}
+
+#stars {
+    display         : flex;
+    justify-content : center;
+}
+
+#description {
+    line-height : 2em;
+    text-align  : center;
+}
+
+#person-details {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+
+    font-size      : 0.8em;
+
+    & #avatar > img {
+        inline-size   : 5em;
+        border-radius : 50%;
+    }
+
+    & #name {
+        font-weight : bold;
+    }
+}
