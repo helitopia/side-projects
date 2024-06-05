@@ -1,3 +1,6 @@
 # Remaining TODO
 
-- Using defined HTML template, move testimonials initialization to DOM scripting
+- project description with demo
+- cursor pointer on arrows
+- improve arrow buttons design
+- disable scrollbar in body

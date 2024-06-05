@@ -5,6 +5,8 @@ const testimonial = document.querySelector("#testimonial")
 const testimonialOwnerAvatar = document.querySelector("#avatar > img")
 const testimonialOwnerName = document.querySelector("#name")
 const testimonialOwnerProfession = document.querySelector("#profession")
+const progressDotsContainer = document.querySelector("#progress-dots")
+
 
 const positiveRatingIconClass = "fa-solid fa-star"
 const negativeRatingIconClass = "fa-regular fa-star"
@@ -37,6 +39,7 @@ function renderTestimonial(index) {
     testimonialOwnerAvatar.src = img;
     testimonialOwnerName.innerHTML = name;
     testimonialOwnerProfession.innerHTML = profession;
+    refreshProgress(index);
 }
 
 function renderPrevTestimonial() {
@@ -53,6 +56,17 @@ function renderRating(rating) {
         .forEach(currStar => currStar.classList = rating-- > 0
             ? positiveRatingIconClass
             : negativeRatingIconClass);
+}
+
+function refreshProgress(index) {
+    let dotElements = progressDotsContainer.children;
+    [...dotElements].forEach(
+        (elem, idx) => {
+            elem.classList.remove("active")
+            if (idx === index)
+                elem.classList.add("active")
+        }
+    )
 }
 
 bLeft.addEventListener("click", () => renderPrevTestimonial())
