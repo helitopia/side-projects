@@ -1,9 +1,13 @@
 const bLeft = document.querySelector("#button-left");
 const bRight = document.querySelector("#button-right");
+const ratingContainer = document.querySelector("#rating-container");
 const testimonial = document.querySelector("#testimonial")
 const testimonialOwnerAvatar = document.querySelector("#avatar > img")
 const testimonialOwnerName = document.querySelector("#name")
 const testimonialOwnerProfession = document.querySelector("#profession")
+
+const positiveRatingIconClass = "fa-solid fa-star"
+const negativeRatingIconClass = "fa-regular fa-star"
 
 class Testimonial {
     constructor(avatar, name, profession, testimonial, rating) {
@@ -28,6 +32,7 @@ function renderTestimonial(index) {
     currentTestimonialIdx = index;
     const {img, name, profession, testimonialContent, rating} = testimonials[index];
 
+    renderRating(parseInt(rating) || 0);
     testimonial.innerHTML = testimonialContent
     testimonialOwnerAvatar.src = img;
     testimonialOwnerName.innerHTML = name;
@@ -40,6 +45,14 @@ function renderPrevTestimonial() {
 
 function renderNextTestimonial() {
     renderTestimonial((currentTestimonialIdx + 1 + testimonials.length) % testimonials.length);
+}
+
+function renderRating(rating) {
+    console.log(rating);
+    [...ratingContainer.children]
+        .forEach(currStar => currStar.classList = rating-- > 0
+            ? positiveRatingIconClass
+            : negativeRatingIconClass);
 }
 
 bLeft.addEventListener("click", () => renderPrevTestimonial())
