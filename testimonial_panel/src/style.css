@@ -13,6 +13,7 @@ body {
     align-content    : center;
     align-items      : center;
     justify-content  : center;
+    overflow: hidden;
 }
 
 #content {
@@ -80,4 +81,11 @@ body {
     border        : 1px solid;
     width         : 5px;
     height        : 5px;
+}
+
+.swipe-btn {
+    cursor           : pointer;
+    background-color : var(--backdrop-color);
+    padding          : 0.5em;
+    border-radius    : 50%;
 }
