@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
+
+* {
+    font-family         : Montserrat, sans-serif;
+    --backdrop-color    : #eee;
+    --testimonial-color : #fff;
+}
+
+body {
+    background-color : var(--backdrop-color);
+    display          : flex;
+    height           : 100vh;
+    align-content    : center;
+    align-items      : center;
+    justify-content  : center;
+    overflow: hidden;
+}
+
+#content {
+    width            : 800px;
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+
+    background-color : var(--testimonial-color);
+    border           : solid transparent;
+    border-radius    : 2em;
+    padding          : 3em;
+
+    & > i:first-child {
+        margin-inline-end : 3em;
+    }
+
+    & > i:last-child {
+        margin-inline-start : 3em;
+    }
+}
+
+#testimonial-container {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+}
+
+#testimonial {
+    line-height : 2em;
+    text-align  : center;
+}
+
+#person-details {
+    text-align : center;
+    font-size  : 0.8em;
+
+    & #avatar > img {
+        inline-size   : 5em;
+        border-radius : 50%;
+    }
+
+    & #name {
+        font-weight : bold;
+    }
+}
+
+#progress-dots {
+    display            : flex;
+    justify-content    : center;
+    align-items        : center;
+    gap                : 5px;
+
+    height             : 1em;
+    margin-block-start : 1em;
+
+    > .active {
+        background-color : #555;
+    }
+}
+
+.progress-dot {
+    border-radius : 50%;
+    border        : 1px solid;
+    width         : 5px;
+    height        : 5px;
+}
+
+.swipe-btn {
+    cursor           : pointer;
+    background-color : var(--backdrop-color);
+    padding          : 0.5em;
+    border-radius    : 50%;
+}
