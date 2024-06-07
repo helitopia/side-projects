@@ -1,5 +1,5 @@
 
-<div align="center"><img src="screenshots/progress_bar_demo.gif" alt="Demo of the project"/></div>
+<div align="center"><img src="screenshots/testimonial_page_demo.gif" alt="Demo of the project"/></div>
 
 # Testimonial Page
 
