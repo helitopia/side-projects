@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+* {
+    font-family: "Handlee", cursive;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    max-width: 70vw;
+}
+
+#suggested-recipe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#recipe-overview {
+    display: flex;
+    gap: 5%;
+}
+
+#recipe-image {
+    max-width: 40%;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random recipe generator</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <div id="suggested-recipe-container">
+        <h1>Want new idea?</h1>
+        <button id="generate-recipe">Get random recipe</button>
+    </div>
+
+    <div id="generated-recipe-container" hidden="">
+        <div id="recipe-overview">
+            <img alt="Recipe image" id="recipe-image" src="res/recipe_img.jpg">
+            <div id="textual-overview">
+                <h1 id="recipe-name">Traditional Croatian Goulash</h1>
+                <p id="recipe-description">Clean the meat from the veins if there are some and cut it into smaller pieces, 3 × 3 cm. Marinate the meat in the mustard and
+                    spices and let it sit in the refrigerator for one hour Heat one tablespoon of pork fat or vegetable oil in a pot and fry the meat on all sides until
+                    it gets browned. Once the meat is cooked, transfer it to a plate and add another tablespoon of fat to the pot Cut the onions very fine, peel the
+                    carrots and shred it using a grater. </p>
+            </div>
+        </div>
+        <div id="recipe-ingredients">
+            <h2>Ingredients:</h2>
+            <ul>
+                <li>Beef - 500g</li>
+                <li>Onions - 2 chopped</li>
+                <li>Carrots - 2 chopped</li>
+            </ul>
+        </div>
+        <div id="recipe-video">
+            <h2>Video description:</h2>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
