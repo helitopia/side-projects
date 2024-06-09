@@ -1,4 +1,11 @@
-const generateRecipe = document.querySelector("#generate-recipe");
+const generateRecipeBtn = document.querySelector("#generate-recipe");
 const generatedRecipeContainer = document.querySelector("#generated-recipe-container")
+const suggestRecipeContainer = document.querySelector("#suggest-recipe-container")
 
-generateRecipe.addEventListener("click", () => generatedRecipeContainer.hidden = !generatedRecipeContainer.hidden)
+generateRecipeBtn.addEventListener("click", () => generateRecipe())
+
+function generateRecipe() {
+    suggestRecipeContainer.style.display = "none";
+    generatedRecipeContainer.style.display = "block";
+    //TODO: Fetch and display recipe information
+}
