@@ -35,4 +35,15 @@ body {
 
 #generated-recipe-container {
     display : none;
+    margin-block: 10vh;
+}
+
+#video-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#video {
+    aspect-ratio: 16 / 9;
+    width: 50%;
 }
