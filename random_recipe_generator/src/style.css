@@ -14,36 +14,42 @@ body {
     align-items     : center;
 }
 
-#container {
-    max-width : 70vw;
-}
-
 #suggest-recipe-container {
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-}
+    text-align : center;
 
-#recipe-overview {
-    display : flex;
-    gap     : 5%;
-}
+    #generate-recipe {
+        text-decoration  : none;
+        color            : black;
+        background-color : lightgray;
+        padding          : 0.5em;
+        border-radius    : 2em;
 
-#recipe-image {
-    max-width : 40%;
+        &:hover {
+            background-color : lightskyblue;
+        }
+    }
 }
 
 #generated-recipe-container {
-    display : none;
-    margin-block: 10vh;
+    max-width    : 70vw;
+    margin-block : 10vh;
+
+    #recipe-overview {
+        display : flex;
+        gap     : 5%;
+
+        #recipe-image {
+            max-width : 40%;
+        }
+    }
 }
 
 #video-wrapper {
-    display: flex;
-    justify-content: center;
-}
+    display         : flex;
+    justify-content : center;
 
-#video {
-    aspect-ratio: 16 / 9;
-    width: 50%;
+    #video {
+        aspect-ratio : 16 / 9;
+        width        : 50%;
+    }
 }
