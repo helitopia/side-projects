@@ -54,7 +54,7 @@ body {
     }
 }
 
-#video-wrapper {
+#recipe-video {
     display         : flex;
     justify-content : center;
 
