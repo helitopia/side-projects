@@ -9,8 +9,8 @@ const apiPropertyMapping = {
     RECIPE_NAME: "strMeal",
     RECIPE_INSTRUCTIONS: "strInstructions",
     VIDEO_SOURCE: "strYoutube",
-    INGREDIENT_WILDCARD: "strIngredient{N}",
-    MEASURE_WILDCARD: "strMeasure{N}"
+    INGREDIENT_WILDCARD: "strIngredient",
+    MEASURE_WILDCARD: "strMeasure"
 };
 
 class Recipe {
@@ -23,8 +23,15 @@ class Recipe {
         this.videoSource = apiJson[apiPropertyMapping.VIDEO_SOURCE];
     }
 
-    static parseIngredientsAndMeasures(api){
-        return ["a", "b", "c"] //demo
+    static parseIngredientsAndMeasures(api) {
+        let ingredients = [];
+        for (let ingredientNum = 1; ; ingredientNum++) {
+            let ingredient = api[apiPropertyMapping.INGREDIENT_WILDCARD + ingredientNum],
+                measure = api[apiPropertyMapping.MEASURE_WILDCARD + ingredientNum];
+            if (!ingredient || !measure)
+                return ingredients;
+            ingredients.push(`${ingredient} - ${measure}`);
+        }
     }
 }
 
@@ -39,8 +46,7 @@ function displayRecipe(recipe) {
     recipeImage.src = recipe.img;
     recipeName.textContent = recipe.name;
     recipeInstructions.textContent = recipe.instructions;
-    getHtmlList(recipe.ingredients)
-        .forEach(r => recipeIngredients.appendChild(r));
+    getHtmlList(recipe.ingredients).forEach(r => recipeIngredients.appendChild(r));
     recipeVideo.src = `https://www.youtube.com/embed/${recipe.videoSource.slice(-11)}`;
 }
 
