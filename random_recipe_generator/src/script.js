@@ -2,6 +2,7 @@ const recipeImage = document.querySelector("#recipe-image");
 const recipeName = document.querySelector("#recipe-name");
 const recipeInstructions = document.querySelector("#recipe-instructions");
 const recipeIngredients = document.querySelector("#recipe-ingredients");
+const videoContainer = document.querySelector("#video-container");
 const recipeVideo = document.querySelector("#video");
 
 const apiPropertyMapping = {
@@ -47,7 +48,7 @@ function displayRecipe(recipe) {
     recipeName.textContent = recipe.name;
     recipeInstructions.textContent = recipe.instructions;
     getHtmlList(recipe.ingredients).forEach(r => recipeIngredients.appendChild(r));
-    recipeVideo.src = `https://www.youtube.com/embed/${recipe.videoSource.slice(-11)}`;
+    displayVideoIfExists(recipe.videoSource.slice(-11))
 }
 
 function getHtmlList(ingredients) {
@@ -56,6 +57,16 @@ function getHtmlList(ingredients) {
         elem.innerHTML = i;
         return elem;
     });
+}
+
+function displayVideoIfExists(videoId) {
+    fetch("https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=" + videoId, {method: "HEAD"})
+        .then(resp => {
+            if (resp.status === 200)
+                recipeVideo.src = `https://www.youtube.com/embed/${videoId}`;
+            else
+                videoContainer.style.display = "none"
+        });
 }
 
 generateRecipe();
