@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+* {
+    font-family     : "Handlee", cursive;
+    text-decoration : none;
+    color           : black;
+}
+
+body {
+    min-height      : 100vh;
+    margin          : 0;
+    padding         : 0;
+
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+}
+
+#suggest-recipe-container {
+    text-align : center;
+
+    #generate-recipe {
+        background-color : lightgray;
+        padding          : 0.5em;
+        border-radius    : 2em;
+
+        &:hover {
+            background-color : lightskyblue;
+        }
+    }
+}
+
+#generated-recipe-container {
+    max-width    : 70vw;
+    margin-block : 10vh;
+
+    #recipe-overview {
+        display : flex;
+        gap     : 5%;
+
+        #recipe-image {
+            max-width  : 40%;
+            max-height : 50vh;
+        }
+    }
+
+    #arrow-back {
+        position         : fixed;
+        top              : 2em;
+        width            : 1em;
+        height           : 1em;
+        padding          : 0.5em;
+        border-radius    : 50%;
+        background-color : lightgray;
+
+        &:hover {
+            background-color: grey;
+        }
+    }
+}
+
+#recipe-video {
+    display         : flex;
+    justify-content : center;
+
+    #video {
+        aspect-ratio : 16 / 9;
+        width        : 50%;
+    }
+}
