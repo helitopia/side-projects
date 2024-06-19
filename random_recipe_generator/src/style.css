@@ -52,6 +52,10 @@ body {
         padding          : 0.5em;
         border-radius    : 50%;
         background-color : lightgray;
+
+        &:hover {
+            background-color: grey;
+        }
     }
 }
 
