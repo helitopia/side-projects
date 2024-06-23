@@ -10,14 +10,18 @@
 <body>
 <div class="album-covers-wrapper">
     <div class="swiper-wrapper">
-        <div class="swiper"><img src="../assets/1.jpg" alt="album cover image"/></div>
-        <div class="swiper"><img src="../assets/2.jpg" alt="album cover image"/></div>
-        <div class="swiper"><img src="../assets/3.jpg" alt="album cover image"/></div>
+        <div class="swiper"><img alt="album cover image" src="../assets/1.jpg"/></div>
+        <div class="swiper"><img alt="album cover image" src="../assets/2.jpg"/></div>
+        <div class="swiper"><img alt="album cover image" src="../assets/3.jpg"/></div>
     </div>
 </div>
 <div class="player-wrapper">
     <h1>Song name</h1>
     <p>Author name</p>
+    <div class="song-progress-wrapper">
+        <input id="song-progress" type="range">
+        <label for="song-progress"></label>
+    </div>
     <div class="player-buttons">
         <div class="prev-song">&lt;</div>
         <div class="pause-play-btn">0</div>

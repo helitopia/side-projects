@@ -1,13 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
+
 * {
-    margin  : 0;
-    padding : 0;
+    margin      : 0;
+    padding     : 0;
+    color       : white;
+    font-family : "Nunito", sans-serif;
 }
 
 body {
-    display         : flex;
-    flex-direction  : column;
-    align-items     : center;
-    justify-content : center;
+    display          : flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction   : column;
+    align-items      : center;
+    justify-content  : center;
+    background-image : url(../assets/background.jpg);
+    backdrop-filter: blur(8px);
 }
 
 .swiper > img {
@@ -25,4 +33,26 @@ body {
     display         : flex;
     flex-direction  : row;
     justify-content : center;
+}
+
+.prev-song, .pause-play-btn, .next-song {
+    display          : flex;
+    justify-content  : center;
+    align-items      : center;
+    box-sizing       : border-box;
+    height           : 2.5em;
+    width            : 2.5em;
+    border           : 1px solid #666;
+    border-radius    : 50%;
+    margin: 0.5em;
+    background-color : #333;
+}
+
+.pause-play-btn {
+    transform: scale(1.5);
+}
+
+:is(.prev-song, .pause-play-btn, .next-song):hover {
+    background-color: #666;
+    cursor: pointer;
 }
