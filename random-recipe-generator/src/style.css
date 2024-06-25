@@ -17,51 +17,51 @@ body {
 
 #suggest-recipe-container {
     text-align : center;
+}
 
-    #generate-recipe {
-        background-color : lightgray;
-        padding          : 0.5em;
-        border-radius    : 2em;
+#generate-recipe {
+    background-color : lightgray;
+    padding          : 0.5em;
+    border-radius    : 2em;
 
-        &:hover {
-            background-color : lightskyblue;
-        }
+    &:hover {
+        background-color : lightskyblue;
     }
 }
 
 #generated-recipe-container {
     max-width    : 70vw;
     margin-block : 10vh;
+}
 
-    #recipe-overview {
-        display : flex;
-        gap     : 5%;
+#recipe-overview {
+    display : flex;
+    gap     : 5%;
+}
 
-        #recipe-image {
-            max-width  : 40%;
-            max-height : 50vh;
-        }
-    }
+#recipe-image {
+    max-width  : 40%;
+    max-height : 50vh;
+}
 
-    #arrow-back {
-        position         : fixed;
-        top              : 2em;
-        padding          : 0.5em;
-        border-radius    : 50%;
-        background-color : lightgray;
+#arrow-back {
+    position         : fixed;
+    top              : 2em;
+    padding          : 0.5em;
+    border-radius    : 50%;
+    background-color : lightgray;
 
-        &:hover {
-            background-color : grey;
-        }
+    &:hover {
+        background-color : grey;
     }
 }
 
 #recipe-video {
     display         : flex;
     justify-content : center;
+}
 
-    #video {
-        aspect-ratio : 16 / 9;
-        width        : 50%;
-    }
+#video {
+    aspect-ratio : 16 / 9;
+    width        : 50%;
 }
