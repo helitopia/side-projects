@@ -8,12 +8,11 @@
 
 body {
     min-height      : 100vh;
-    margin          : 0;
-    padding         : 0;
-
     display         : flex;
     justify-content : center;
     align-items     : center;
+    margin          : 0;
+    padding         : 0;
 }
 
 #suggest-recipe-container {
@@ -47,14 +46,12 @@ body {
     #arrow-back {
         position         : fixed;
         top              : 2em;
-        width            : 1em;
-        height           : 1em;
         padding          : 0.5em;
         border-radius    : 50%;
         background-color : lightgray;
 
         &:hover {
-            background-color: grey;
+            background-color : grey;
         }
     }
 }
