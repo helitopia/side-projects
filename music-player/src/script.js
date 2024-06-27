@@ -1,10 +1,15 @@
-new Swiper('.swiper', {
+new Swiper('.album-covers-wrapper', {
     direction: 'horizontal',
+    slidesPerView: "auto",
+    centeredSlides: true,
+    initialSlide: 2,
+    spaceBetween: 50,
+
     effect: "coverflow",
     coverflowEffect: {
-        slideShadows: false
+        slideShadows: false,
+        rotate: 20,
     },
-    slidesPerView: 3,
     navigation: {
         nextEl: '.next-song',
         prevEl: '.prev-song',

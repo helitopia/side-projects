@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
 
+:root {
+    --album-cover-width : 200px;
+}
+
 * {
     margin      : 0;
     padding     : 0;
@@ -19,17 +23,19 @@ body {
 }
 
 .album-covers-wrapper {
-    width : 800px;
+    width          : 90%;
+    padding-bottom : 4em;
 }
 
-
 .swiper-slide {
-    width: 30px;
+    width        : var(--album-cover-width);
+    aspect-ratio : 1 / 1;
 }
 
 .swiper-slide > img {
-    aspect-ratio : 1 / 1;
-    max-height   : 30vh;
+    width         : 100%;
+    height        : 100%;
+    border-radius : 10%;
 }
 
 .player-wrapper {
