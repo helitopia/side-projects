@@ -1,7 +1,10 @@
 const songTitle = document.querySelector(".song-title");
 const songAuthor = document.querySelector(".author-name");
 const prevSongButton = document.querySelector(".prev-song");
+const pausePlayButton = document.querySelector(".pause-play-btn");
 const nextSongButton = document.querySelector(".next-song");
+let playIconElem = createIcon("fa-solid", "fa-play");
+let pauseIconElem = createIcon("fa-solid", "fa-pause");
 
 class Track {
     constructor(title, authorName, trackPath, albumCoverPath) {
@@ -35,12 +38,29 @@ function initSwiper() {
 function defineButtonEventHandlers() {
     prevSongButton.addEventListener("click", () => updatePlayingSong(--currSongIdx));
     nextSongButton.addEventListener("click", () => updatePlayingSong(++currSongIdx));
+    pausePlayButton.addEventListener("click", () => {
+        updatePausePlayBtn()
+    })
 }
 
 function updatePlayingSong(targetSongIdx) {
     let currTrack = tracks[targetSongIdx];
     songTitle.textContent = currTrack.title;
     songAuthor.textContent = currTrack.authorName;
+}
+
+function updatePausePlayBtn() {
+    songPlayingState
+        ? pausePlayButton.replaceChild(playIconElem, pauseIconElem)
+        : pausePlayButton.replaceChild(pauseIconElem, playIconElem);
+    songPlayingState = !songPlayingState;
+}
+
+function createIcon(...classList) {
+    let icon = document.createElement("i");
+    icon.classList.add(...classList);
+    console.log(icon.classList)
+    return icon;
 }
 
 
@@ -65,7 +85,9 @@ const tracks = [
     )
 ]
 let currSongIdx = 1
+let songPlayingState = false;
 
 initSwiper();
 updatePlayingSong(currSongIdx);
+pausePlayButton.appendChild(playIconElem);
 defineButtonEventHandlers();
