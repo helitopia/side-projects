@@ -3,8 +3,3 @@
 # Progress bar
 
 The main feature of the described web-page is a navigation bar on the left, which is at a first glance just a series of dots, but when hovered over it - it gets unwrapped to contain section names
-
-## TODO
-
-- JS highlight of current section
-- Transition for more smooth unwrapping of navbar
