@@ -12,14 +12,15 @@
 }
 
 body {
-    display          : flex;
-    width            : 100vw;
-    height           : 100vh;
-    flex-direction   : column;
-    align-items      : center;
-    justify-content  : center;
-    background-image : url(../assets/background.jpg);
-    backdrop-filter  : blur(8px);
+    width           : 100vw;
+    height          : 100vh;
+    display         : flex;
+    flex-direction  : column;
+    align-items     : center;
+    justify-content : center;
+    background      : url(../assets/background.jpg) 200vw no-repeat;
+    backdrop-filter : blur(10px);
+    animation       : 60s linear alternate infinite background-sliding;
 }
 
 .album-covers-wrapper {
@@ -82,4 +83,13 @@ body {
     cursor           : pointer;
     transition       : 200ms scale;
     scale            : 0.95;
+}
+
+@keyframes background-sliding {
+    0% {
+        background-position : 0;
+    }
+    100% {
+        background-position : 100%;
+    }
 }
