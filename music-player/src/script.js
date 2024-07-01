@@ -1,5 +1,6 @@
 const songTitle = document.querySelector(".song-title");
 const songAuthor = document.querySelector(".author-name");
+const songPlaybackElem = document.querySelector(".song-playback");
 const prevSongButton = document.querySelector(".prev-song");
 const pausePlayButton = document.querySelector(".pause-play-btn");
 const nextSongButton = document.querySelector(".next-song");
@@ -7,7 +8,7 @@ let playIconElem = createIcon("fa-solid", "fa-play");
 let pauseIconElem = createIcon("fa-solid", "fa-pause");
 
 class Track {
-    constructor(title, authorName, trackPath, albumCoverPath) {
+    constructor(title, authorName, albumCoverPath, trackPath) {
         this.title = title;
         this.authorName = authorName;
         this.trackPath = trackPath;
@@ -35,25 +36,29 @@ function initSwiper() {
     });
 }
 
-function defineButtonEventHandlers() {
+function defineEventHandlers() {
     prevSongButton.addEventListener("click", () => updatePlayingSong(--currSongIdx));
     nextSongButton.addEventListener("click", () => updatePlayingSong(++currSongIdx));
-    pausePlayButton.addEventListener("click", () => {
-        updatePausePlayBtn()
-    })
+    pausePlayButton.addEventListener("click", () => flipPausePlayBtn())
+    songPlaybackElem.addEventListener("canplay", () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause())
 }
 
 function updatePlayingSong(targetSongIdx) {
     let currTrack = tracks[targetSongIdx];
     songTitle.textContent = currTrack.title;
     songAuthor.textContent = currTrack.authorName;
+    songPlaybackElem.src = "../" + currTrack.trackPath;
 }
 
-function updatePausePlayBtn() {
-    songPlayingState
-        ? pausePlayButton.replaceChild(playIconElem, pauseIconElem)
-        : pausePlayButton.replaceChild(pauseIconElem, playIconElem);
+function flipPausePlayBtn() {
     songPlayingState = !songPlayingState;
+    if (songPlayingState) {
+        pausePlayButton.replaceChild(pauseIconElem, playIconElem);
+        songPlaybackElem.play();
+    } else {
+        pausePlayButton.replaceChild(playIconElem, pauseIconElem);
+        songPlaybackElem.pause();
+    }
 }
 
 function createIcon(...classList) {
@@ -90,4 +95,4 @@ let songPlayingState = false;
 initSwiper();
 updatePlayingSong(currSongIdx);
 pausePlayButton.appendChild(playIconElem);
-defineButtonEventHandlers();
+defineEventHandlers();
