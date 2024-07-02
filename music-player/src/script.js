@@ -21,7 +21,7 @@ function initSwiper() {
         direction: 'horizontal',
         slidesPerView: "auto",
         centeredSlides: true,
-        initialSlide: currSongIdx,
+        initialSlide: initialSongIdx,
         spaceBetween: 50,
 
         effect: "coverflow",
@@ -39,7 +39,7 @@ function initSwiper() {
 function defineEventHandlers() {
     prevSongButton.addEventListener("click", () => updatePlayingSong(--currSongIdx));
     nextSongButton.addEventListener("click", () => updatePlayingSong(++currSongIdx));
-    pausePlayButton.addEventListener("click", () => flipPausePlayBtn())
+    pausePlayButton.addEventListener("click", () => setOrFlipPlayBtnState())
     songPlaybackElem.addEventListener("canplay", () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause())
 }
 
@@ -48,10 +48,14 @@ function updatePlayingSong(targetSongIdx) {
     songTitle.textContent = currTrack.title;
     songAuthor.textContent = currTrack.authorName;
     songPlaybackElem.src = "../" + currTrack.trackPath;
+    if (!onLoadPlaybackFired && currSongIdx !== initialSongIdx) {
+        onLoadPlaybackFired = true;
+        setOrFlipPlayBtnState(true);
+    }
 }
 
-function flipPausePlayBtn() {
-    songPlayingState = !songPlayingState;
+function setOrFlipPlayBtnState(doPlaySong) {
+    songPlayingState = doPlaySong ?? !songPlayingState;
     if (songPlayingState) {
         pausePlayButton.replaceChild(pauseIconElem, playIconElem);
         songPlaybackElem.play();
@@ -89,10 +93,12 @@ const tracks = [
         "assets/song-list_Dua-Lipa-Physical.mp3"
     )
 ]
-let currSongIdx = 1
+const initialSongIdx = Math.floor(tracks.length / 2);
+let currSongIdx = initialSongIdx;
 let songPlayingState = false;
+let onLoadPlaybackFired = false;
 
 initSwiper();
-updatePlayingSong(currSongIdx);
-pausePlayButton.appendChild(playIconElem);
 defineEventHandlers();
+pausePlayButton.appendChild(playIconElem);
+updatePlayingSong(currSongIdx, false);
