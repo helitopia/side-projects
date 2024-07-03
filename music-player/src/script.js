@@ -39,8 +39,8 @@ function initSwiper() {
 function defineEventHandlers() {
     prevSongButton.addEventListener("click", () => updatePlayingSong(--currSongIdx));
     nextSongButton.addEventListener("click", () => updatePlayingSong(++currSongIdx));
-    pausePlayButton.addEventListener("click", () => setOrFlipPlayBtnState())
-    songPlaybackElem.addEventListener("canplay", () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause())
+    pausePlayButton.addEventListener("click", () => setTimeout(() => setOrFlipPlayBtnState(), 100));
+    songPlaybackElem.addEventListener("canplay", () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
 }
 
 function updatePlayingSong(targetSongIdx) {
