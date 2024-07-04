@@ -46,12 +46,25 @@ body {
 }
 
 .song-progress-wrapper {
-    margin-block : 2em;
+    margin-block-start : 2em;
     width        : 100%;
 }
 
 #song-progress {
     width : 100%;
+}
+
+.song-time-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: 1em;
+}
+
+.remaining-song-time, .overall-song-duration {
+    color: grey;
+    font-size: 90%;
+    padding-inline: 0.5em;
 }
 
 .player-buttons {
