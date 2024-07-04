@@ -6,6 +6,8 @@ const pausePlayButton = document.querySelector(".pause-play-btn");
 const nextSongButton = document.querySelector(".next-song");
 let playIconElem = createIcon("fa-solid", "fa-play");
 let pauseIconElem = createIcon("fa-solid", "fa-pause");
+const playbackDurationElem = document.querySelector(".overall-song-duration");
+const playbackRemainingTimeElem = document.querySelector(".remaining-song-time");
 
 class Track {
     constructor(title, authorName, albumCoverPath, trackPath) {
@@ -39,8 +41,14 @@ function initSwiper() {
 function defineEventHandlers() {
     prevSongButton.addEventListener("click", () => updatePlayingSong(--currSongIdx));
     nextSongButton.addEventListener("click", () => updatePlayingSong(++currSongIdx));
-    pausePlayButton.addEventListener("click", () => setTimeout(() => setOrFlipPlayBtnState(), 100));
-    songPlaybackElem.addEventListener("canplay", () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
+    pausePlayButton.addEventListener("click",
+        () => setTimeout(() => setOrFlipPlayBtnState(), 100));
+    songPlaybackElem.addEventListener("canplay",
+        () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
+    songPlaybackElem.addEventListener("durationchange",
+        () => playbackDurationElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.duration));
+    songPlaybackElem.addEventListener("timeupdate",
+        () => playbackRemainingTimeElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.currentTime));
 }
 
 function updatePlayingSong(targetSongIdx) {
@@ -68,8 +76,19 @@ function setOrFlipPlayBtnState(doPlaySong) {
 function createIcon(...classList) {
     let icon = document.createElement("i");
     icon.classList.add(...classList);
-    console.log(icon.classList)
     return icon;
+}
+
+function formatDecimalSecondsAsTime(fSec) {
+    let roundedSeconds = Math.round(fSec);
+    let minutes = Math.floor(roundedSeconds / 60);
+    let seconds = roundedSeconds % 60;
+
+    function appendZero(number) {
+        return number < 10 ? "0" + number : number;
+    }
+
+    return `${appendZero(minutes)}:${appendZero(seconds)}`;
 }
 
 
@@ -101,4 +120,4 @@ let onLoadPlaybackFired = false;
 initSwiper();
 defineEventHandlers();
 pausePlayButton.appendChild(playIconElem);
-updatePlayingSong(currSongIdx, false);
+updatePlayingSong(currSongIdx);
