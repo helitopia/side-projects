@@ -9,6 +9,7 @@
     padding     : 0;
     color       : white;
     font-family : "Nunito", sans-serif;
+    user-select : none;
 }
 
 body {
@@ -45,9 +46,15 @@ body {
     align-items    : center;
 }
 
+.song-title, .author-name {
+    width       : 100%;
+    text-align  : center;
+    user-select : text;
+}
+
 .song-progress-wrapper {
     margin-block-start : 2em;
-    width        : 100%;
+    width              : 100%;
 }
 
 #song-progress {
@@ -55,16 +62,16 @@ body {
 }
 
 .song-time-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-block-end: 1em;
+    width            : 100%;
+    display          : flex;
+    justify-content  : space-between;
+    margin-block-end : 1em;
 }
 
 .remaining-song-time, .overall-song-duration {
-    color: grey;
-    font-size: 90%;
-    padding-inline: 0.5em;
+    color          : grey;
+    font-size      : 90%;
+    padding-inline : 0.5em;
 }
 
 .player-buttons {
