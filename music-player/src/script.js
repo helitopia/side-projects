@@ -1,3 +1,32 @@
+import Track from "./track.js";
+
+const tracks = [
+    new Track(
+        "Symphony",
+        "Clean Bandit ft. Zara Larsson",
+        "assets/1.png",
+        "assets/song-list_Clean-Bandit-Symphony.mp3"
+    ),
+    new Track(
+        "As It Was",
+        "Harry Styles",
+        "assets/4.png",
+        "assets/song-list_Harry-Styles-As-It-Was.mp3"
+    ),
+    new Track(
+        "Physical",
+        "Dua Lipa",
+        "assets/5.png",
+        "assets/song-list_Dua-Lipa-Physical.mp3"
+    )
+]
+const initialSongIdx = Math.floor(tracks.length / 2);
+let currSongIdx = initialSongIdx;
+let songPlayingState = false;
+let onLoadPlaybackFired = false;
+let showRemainingOrCurrentTime = true; // 0 - Remaining, 1 - Current
+
+// DOM API elements
 const songTitle = document.querySelector(".song-title");
 const songAuthor = document.querySelector(".author-name");
 const songPlaybackElem = document.querySelector(".song-playback");
@@ -9,13 +38,11 @@ let pauseIconElem = createIcon("fa-solid", "fa-pause");
 const playbackDurationElem = document.querySelector(".overall-song-duration");
 const playbackRemainingTimeElem = document.querySelector(".remaining-song-time");
 
-class Track {
-    constructor(title, authorName, albumCoverPath, trackPath) {
-        this.title = title;
-        this.authorName = authorName;
-        this.trackPath = trackPath;
-        this.albumCoverPath = albumCoverPath;
-    }
+function initializeProgram() {
+    initSwiper();
+    defineEventHandlers();
+    pausePlayButton.appendChild(playIconElem);
+    updatePlayingSong(currSongIdx);
 }
 
 function initSwiper() {
@@ -47,8 +74,11 @@ function defineEventHandlers() {
         () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
     songPlaybackElem.addEventListener("durationchange",
         () => playbackDurationElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.duration));
-    songPlaybackElem.addEventListener("timeupdate",
-        () => playbackRemainingTimeElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.currentTime));
+    songPlaybackElem.addEventListener("timeupdate", () => setRemainingOrCurrentTime());
+    playbackRemainingTimeElem.addEventListener("click", () => {
+        showRemainingOrCurrentTime ^= true
+        setRemainingOrCurrentTime();
+    });
 }
 
 function updatePlayingSong(targetSongIdx) {
@@ -91,33 +121,11 @@ function formatDecimalSecondsAsTime(fSec) {
     return `${appendZero(minutes)}:${appendZero(seconds)}`;
 }
 
+function setRemainingOrCurrentTime() {
+    playbackRemainingTimeElem.textContent = formatDecimalSecondsAsTime(showRemainingOrCurrentTime
+        ? songPlaybackElem.currentTime
+        : songPlaybackElem.duration - songPlaybackElem.currentTime || 0);
+}
 
-const tracks = [
-    new Track(
-        "Symphony",
-        "Clean Bandit ft. Zara Larsson",
-        "assets/1.png",
-        "assets/song-list_Clean-Bandit-Symphony.mp3"
-    ),
-    new Track(
-        "As It Was",
-        "Harry Styles",
-        "assets/4.png",
-        "assets/song-list_Harry-Styles-As-It-Was.mp3"
-    ),
-    new Track(
-        "Physical",
-        "Dua Lipa",
-        "assets/5.png",
-        "assets/song-list_Dua-Lipa-Physical.mp3"
-    )
-]
-const initialSongIdx = Math.floor(tracks.length / 2);
-let currSongIdx = initialSongIdx;
-let songPlayingState = false;
-let onLoadPlaybackFired = false;
 
-initSwiper();
-defineEventHandlers();
-pausePlayButton.appendChild(playIconElem);
-updatePlayingSong(currSongIdx);
+initializeProgram();
