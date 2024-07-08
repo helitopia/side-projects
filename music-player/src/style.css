@@ -69,9 +69,14 @@ body {
 }
 
 .remaining-song-time, .overall-song-duration {
-    color          : grey;
+    color          : rgba(128,128,128, 1);
     font-size      : 90%;
     padding-inline : 0.5em;
+}
+
+.remaining-song-time:hover {
+    cursor: pointer;
+    color: rgba(128,128,128, 0.5);
 }
 
 .player-buttons {

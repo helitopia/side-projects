@@ -24,6 +24,7 @@ const initialSongIdx = Math.floor(tracks.length / 2);
 let currSongIdx = initialSongIdx;
 let songPlayingState = false;
 let onLoadPlaybackFired = false;
+let showRemainingOrCurrentTime = true; // 0 - Remaining, 1 - Current
 
 // DOM API elements
 const songTitle = document.querySelector(".song-title");
@@ -73,8 +74,11 @@ function defineEventHandlers() {
         () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
     songPlaybackElem.addEventListener("durationchange",
         () => playbackDurationElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.duration));
-    songPlaybackElem.addEventListener("timeupdate",
-        () => playbackRemainingTimeElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.currentTime));
+    songPlaybackElem.addEventListener("timeupdate", () => setRemainingOrCurrentTime());
+    playbackRemainingTimeElem.addEventListener("click", () => {
+        showRemainingOrCurrentTime ^= true
+        setRemainingOrCurrentTime();
+    });
 }
 
 function updatePlayingSong(targetSongIdx) {
@@ -115,6 +119,12 @@ function formatDecimalSecondsAsTime(fSec) {
     }
 
     return `${appendZero(minutes)}:${appendZero(seconds)}`;
+}
+
+function setRemainingOrCurrentTime() {
+    playbackRemainingTimeElem.textContent = formatDecimalSecondsAsTime(showRemainingOrCurrentTime
+        ? songPlaybackElem.currentTime
+        : songPlaybackElem.duration - songPlaybackElem.currentTime || 0);
 }
 
 
