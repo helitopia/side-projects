@@ -52,6 +52,7 @@ function initSwiper() {
         centeredSlides: true,
         initialSlide: initialSongIdx,
         spaceBetween: 50,
+        allowTouchMove: false,
 
         effect: "coverflow",
         coverflowEffect: {
