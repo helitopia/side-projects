@@ -33,6 +33,7 @@ const songPlaybackElem = document.querySelector(".song-playback");
 const prevSongButton = document.querySelector(".prev-song");
 const pausePlayButton = document.querySelector(".pause-play-btn");
 const nextSongButton = document.querySelector(".next-song");
+const playbackProgressElem = document.querySelector("#song-progress")
 let playIconElem = createIcon("fa-solid", "fa-play");
 let pauseIconElem = createIcon("fa-solid", "fa-pause");
 const playbackDurationElem = document.querySelector(".overall-song-duration");
@@ -73,11 +74,26 @@ function defineEventHandlers() {
         () => setTimeout(() => setOrFlipPlayBtnState(), 100));
     songPlaybackElem.addEventListener("canplay",
         () => songPlayingState ? songPlaybackElem.play() : songPlaybackElem.pause());
+
     songPlaybackElem.addEventListener("durationchange",
-        () => playbackDurationElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.duration));
-    songPlaybackElem.addEventListener("timeupdate", () => setRemainingOrCurrentTime());
+        () => {
+            playbackDurationElem.textContent = formatDecimalSecondsAsTime(songPlaybackElem.duration);
+            playbackProgressElem.max = songPlaybackElem.duration;
+            playbackProgressElem.value = 0;
+        });
+
+    songPlaybackElem.addEventListener("timeupdate", () => {
+        setRemainingOrCurrentTime();
+        playbackProgressElem.value = songPlaybackElem.currentTime;
+    });
+
     playbackRemainingTimeElem.addEventListener("click", () => {
         showRemainingOrCurrentTime ^= true
+        setRemainingOrCurrentTime();
+    });
+
+    playbackProgressElem.addEventListener("input", () => {
+        songPlaybackElem.currentTime = playbackProgressElem.value;
         setRemainingOrCurrentTime();
     });
 }
