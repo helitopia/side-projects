@@ -1,0 +1,31 @@
+* {
+    font-family : "Roboto", monospace;
+    color       : white;
+    outline     : none;
+    margin      : 0;
+    padding     : 0;
+}
+
+body {
+    display          : flex;
+    width            : 100vw;
+    height           : 100vh;
+    justify-content  : center;
+    align-items      : center;
+    background-color : #201c24;
+}
+
+.calc-container {
+    display           : flex;
+    align-items       : baseline;
+    margin-inline-end : 20vw;
+    font-size         : 2em;
+}
+
+.answer {
+    inline-size         : 6ch;
+    margin-inline-start : 1ch;
+    font-size           : inherit;
+    background-color    : #1b1b1c;
+    border              : 1px solid #787878;
+}
