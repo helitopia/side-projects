@@ -22,10 +22,16 @@ body {
     font-size         : 2em;
 }
 
-.answer {
+.answer-prompt {
     inline-size         : 6ch;
     margin-inline-start : 1ch;
     font-size           : inherit;
     background-color    : #1b1b1c;
     border              : 1px solid #787878;
+}
+
+.answer {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
 }
