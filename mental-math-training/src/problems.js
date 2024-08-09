@@ -57,8 +57,12 @@ function firstJanuary(n) {
 /**
  * 2-digit addition
  */
-function twoDigitAddition() {
-    return addition([0, 100]);
+function twoDigitAddition(n) {
+    return randomPart(addition([0, 100]), n);
+}
+
+function threeDigitAddition(n) {
+    return randomPart(addition([0, 1000]), n);
 }
 
 function addition(operandOneRange, operandTwoRange, operandOneFilter, operandTwoFilter) {

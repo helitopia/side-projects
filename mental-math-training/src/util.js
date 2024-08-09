@@ -1,5 +1,8 @@
+/**
+ * Get n random elements of arr
+ */
 function randomPart(arr, n) {
-    return shuffle(arr).slice(n);
+    return shuffle(arr).slice(n ?? 0);
 }
 
 function shuffle(array) {
@@ -19,6 +22,10 @@ function shuffle(array) {
     return array;
 }
 
+/**
+ * Return problem object. The function is used to centralize
+ * problem object creation
+ */
 function addProblemToArray(arr, problem, solution) {
     arr.push({"problem": problem, "solution": solution})
 }

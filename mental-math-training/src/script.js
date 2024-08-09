@@ -1,29 +1,61 @@
-const problemElem = document.querySelector("#problem");
-const answerPromptElem = document.querySelector(".answer-prompt");
-const answerElem = document.querySelector(".answer");
-let problems = defineProblems();
-let currentProblemIdx = -1;
+const config = {
+    problemElem: document.querySelector("#problem"),
+    answerPromptElem: document.querySelector(".answer-prompt"),
+    answerElem: document.querySelector(".answer"),
+    optionsFieldset: document.querySelector(".options"),
 
-updateProblem();
+    problemOptions: {
+        "Two-digit addition": twoDigitAddition,
+        "Three-digit addition": threeDigitAddition,
+        "x 11": xEleven
+    },
+
+    currentProblemIdx: -1,
+    problems: []
+}
+
+renderModes()
+defineProblems();
 enableInputValidation();
 
+
+function renderModes() {
+    for (let [optionName, optionHandler] of Object.entries(config.problemOptions)) {
+        let div = document.createElement("div");
+        let input = div.appendChild(document.createElement("input"));
+        let label = div.appendChild(document.createElement("label"));
+
+        input.type = "checkbox";
+        input.id = optionHandler.name;
+        input.checked = true;
+        input.addEventListener("change", defineProblems);
+        label.htmlFor = input.id;
+        label.textContent = optionName;
+
+        config.optionsFieldset.appendChild(div);
+    }
+}
+
+
 function defineProblems() {
-    let m = twoDigitAddition();
-    return shuffle(m);
+    let inputs = config.optionsFieldset.querySelectorAll("input");
+    let checkedInputs = [...inputs].filter(i => i.checked);
+    config.problems = shuffle(checkedInputs.flatMap(i => window[i.id]()));
+    updateProblem();
 }
 
 
 function updateProblem() {
-    answerPromptElem.value = "";
-    let currProblem = problems[++currentProblemIdx];
-    problemElem.textContent = currProblem.problem + " =";
-    answerElem.textContent = currProblem.solution
+    config.answerPromptElem.value = "";
+    let currProblem = config.problems[++config.currentProblemIdx];
+    config.problemElem.textContent = currProblem.problem + " =";
+    config.answerElem.textContent = currProblem.solution
 }
 
 function enableInputValidation() {
-    answerPromptElem.addEventListener("input", d => {
-        if (answerPromptElem.value == problems[currentProblemIdx].solution) {
-            answerPromptElem.value = "";
+    config.answerPromptElem.addEventListener("input", d => {
+        if (config.answerPromptElem.value == config.problems[config.currentProblemIdx].solution) {
+            config.answerPromptElem.value = "";
             updateProblem()
         }
     })
