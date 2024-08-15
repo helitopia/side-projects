@@ -4,12 +4,18 @@ import {nhTimesNm, xEleven} from "./problem_generator_functions/multiplication.j
 import {threeDigitAddition, twoDigitAddition} from "./problem_generator_functions/addition.js";
 import {shuffle} from "./util.js";
 import {ProblemMode} from "./objects/problem_mode.js";
+import {twoDigitSubtraction} from "./problem_generator_functions/subtraction.js";
 
 let problemModes = [
-    new ProblemMode("NN + NN", twoDigitAddition),
-    new ProblemMode("NNN + NNN", threeDigitAddition),
-    new ProblemMode("NN x 11", xEleven),
+    new ProblemMode("0-99 + 0-99", twoDigitAddition),
+    new ProblemMode("0-999 + 0-999", threeDigitAddition),
+    new ProblemMode("0-99 + 0-99 = 100", twoDigitSubtraction),
+
+    new ProblemMode("0-99 x 11", xEleven),
     new ProblemMode("NH x NM, where H + M = 10", nhTimesNm),
+
+    new ProblemMode("0-99 - 0-99", twoDigitSubtraction),
+
     new ProblemMode("1st January of 2000-2099 year", firstJanuary)
 ]
 
