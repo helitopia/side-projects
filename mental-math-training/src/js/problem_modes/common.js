@@ -1,7 +1,7 @@
 import {MathBinaryProblem} from "../objects/problem_type.js";
 import {randomPart} from "../util.js";
 
-export {binaryOperation};
+export {binaryOperation, addition, subtraction, multiplication};
 
 /**
  * General function to generate various binary problems
@@ -27,4 +27,37 @@ function binaryOperation(problemAmount, operandOneRange, operandTwoRange, operan
             problems.push(new MathBinaryProblem(operandOne, operandTwo, operationSymbol, operationFunc(operandOne, operandTwo)))
         }
     return randomPart(problems, problemAmount);
+}
+
+function subtraction(problemAmount, operandOneRange, operandTwoRange, operandFilter) {
+    return binaryOperation(
+        problemAmount,
+        operandOneRange,
+        operandTwoRange,
+        operandFilter,
+        "-",
+        (x, y) => x - y
+    );
+}
+
+function addition(problemAmount, operandOneRange, operandTwoRange, operandFilter) {
+    return binaryOperation(
+        problemAmount,
+        operandOneRange,
+        operandTwoRange,
+        operandFilter,
+        "+",
+        (x, y) => x + y
+    );
+}
+
+function multiplication(problemAmount, operandOneRange, operandTwoRange, operandFilter) {
+    return binaryOperation(
+        problemAmount,
+        operandOneRange,
+        operandTwoRange,
+        operandFilter,
+        "x",
+        (x, y) => x * y
+    );
 }

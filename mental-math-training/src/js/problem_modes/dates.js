@@ -3,6 +3,8 @@ import {DateProblem} from "../objects/problem_type.js";
 
 export {firstJanuary};
 
+firstJanuary.description = "1st January of 2000-2099 year";
+
 /**
  * Problems of type "Which day is 1st January of 2000-2099 year"
  */

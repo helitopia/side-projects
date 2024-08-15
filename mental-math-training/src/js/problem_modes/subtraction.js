@@ -1,17 +1,9 @@
-import {binaryOperation} from "./common.js";
+import {subtraction} from "./common.js";
 
-export {subtraction, twoDigitSubtraction};
+export {twoDigitSubtraction};
 
-function subtraction(problemAmount, operandOneRange, operandTwoRange, operandFilter) {
-    return binaryOperation(
-        problemAmount,
-        operandOneRange,
-        operandTwoRange,
-        operandFilter,
-        "-",
-        (x, y) => x - y
-    );
-}
+twoDigitSubtraction.description = "0-99 - 0-99";
+
 
 function twoDigitSubtraction(problemAmount) {
     return subtraction(problemAmount, [0, 100], [0, 100], (x, y) => x > y);

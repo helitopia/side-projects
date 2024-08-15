@@ -1,17 +1,10 @@
-import {binaryOperation} from "./common.js";
+import {addition} from "./common.js";
 
-export {addition, twoDigitAddition, threeDigitAddition};
+export {twoDigitAddition, threeDigitAddition};
 
-function addition(problemAmount, operandOneRange, operandTwoRange, operandFilter) {
-    return binaryOperation(
-        problemAmount,
-        operandOneRange,
-        operandTwoRange,
-        operandFilter,
-        "+",
-        (x, y) => x + y
-    );
-}
+twoDigitAddition.description = "0-99 + 0-99";
+threeDigitAddition.description = "0-999 + 0-999";
+
 
 /**
  * Shortcut for problems of type NN + NN

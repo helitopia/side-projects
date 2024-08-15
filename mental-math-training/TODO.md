@@ -2,5 +2,4 @@
 - Bug - failing script when reached end of problem list
 - Add timer / problems limit settings
 - Add calculations per minute stats
-- Add auto initialization of problem modes (by traversing functions, e.g. addition.js)
 - Add division
