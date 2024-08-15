@@ -1,10 +1,10 @@
 import config from './config.js';
-import {firstJanuary} from "./problem_generator_functions/dates.js";
-import {nhTimesNm, xEleven} from "./problem_generator_functions/multiplication.js";
-import {threeDigitAddition, twoDigitAddition} from "./problem_generator_functions/addition.js";
+import {firstJanuary} from "./problem_modes/dates.js";
+import {nhTimesNm, xEleven} from "./problem_modes/multiplication.js";
+import {threeDigitAddition, twoDigitAddition} from "./problem_modes/addition.js";
 import {shuffle} from "./util.js";
 import {ProblemMode} from "./objects/problem_mode.js";
-import {twoDigitSubtraction} from "./problem_generator_functions/subtraction.js";
+import {twoDigitSubtraction} from "./problem_modes/subtraction.js";
 
 let problemModes = [
     new ProblemMode("0-99 + 0-99", twoDigitAddition),
