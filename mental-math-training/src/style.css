@@ -22,7 +22,7 @@ body {
     font-size   : 2em;
 }
 
-.answer-prompt {
+#answer-prompt {
     inline-size         : 6ch;
     margin-inline-start : 1ch;
     font-size           : inherit;
@@ -36,16 +36,17 @@ body {
     right    : 5vw;
 }
 
-.options {
+.problem-options {
     position: absolute;
     top: 5vh;
     left: 10vw;
+    border: 1px solid gray;
 }
 
-.options div {
+.problem-options div {
     padding: 0.5em;
 }
 
-.options label {
+.problem-options label {
     margin-left: 0.5em;
 }

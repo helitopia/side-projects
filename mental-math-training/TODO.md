@@ -1,0 +1,4 @@
+- Move out general addition, multiplication function into common function
+- Add subtraction, division
+- Refactor script.js to clean it up a bit
+- Bug - failing script when reached end of problem list

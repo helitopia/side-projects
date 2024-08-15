@@ -1,3 +1,5 @@
+export {randomPart, shuffle, getDigit};
+
 /**
  * Get n random elements of arr
  */
@@ -28,4 +30,11 @@ function shuffle(array) {
  */
 function addProblemToArray(arr, problem, solution) {
     arr.push({"problem": problem, "solution": solution})
+}
+
+/**
+ * Retrieve digit of a number at specified index
+ */
+function getDigit(number, digitNum) {
+    return +("" + number)[digitNum];
 }
