@@ -1,4 +1,4 @@
-export {Problem, MathBinaryProblem, DateProblem};
+export {Problem, MathBinaryProblem, MathUnaryProblem, DateProblem};
 
 class Problem {
     constructor(solution) {
@@ -19,13 +19,24 @@ class MathBinaryProblem extends Problem {
     }
 }
 
-class DateProblem extends Problem {
-    constructor(question, solution) {
+class MathUnaryProblem extends Problem {
+    constructor(problem, solution) {
         super(solution);
-        this.question = question;
+        this.problem = problem;
     }
 
     display() {
-        return this.question + " = ";
+        return `${this.problem}`;
+    }
+}
+
+class DateProblem extends Problem {
+    constructor(problem, solution) {
+        super(solution);
+        this.problem = problem;
+    }
+
+    display() {
+        return this.problem + " = ";
     }
 }
