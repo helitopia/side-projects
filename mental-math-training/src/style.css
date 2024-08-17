@@ -37,16 +37,29 @@ body {
 }
 
 .problem-options {
-    position: absolute;
-    top: 5vh;
-    left: 10vw;
-    border: 1px solid gray;
+    position : absolute;
+    top      : 5vh;
+    left     : 10vw;
+    border   : 1px solid grey;
 }
 
 .problem-options div {
-    padding: 0.5em;
+    padding : 0.5em;
 }
 
 .problem-options label {
-    margin-left: 0.5em;
+    margin-left : 0.5em;
+}
+
+.problem-amount {
+    position  : absolute;
+    bottom    : 20vh;
+    left      : 10vw;
+    font-size : 1.5em;
+}
+
+.problem-amount > input {
+    font-size : inherit;
+    color     : black;
+    width     : 3ch;
 }

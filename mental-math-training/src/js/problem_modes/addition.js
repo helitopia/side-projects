@@ -5,7 +5,7 @@ import {randomPart} from "../util.js";
 export {twoDigitAddition, threeDigitAddition, oneHundredComplements};
 
 twoDigitAddition.description = "0-99 + 0-99";
-threeDigitAddition.description = "0-999 + 0-999";
+threeDigitAddition.description = "100-999 + 100-999";
 oneHundredComplements.description = "NN + x = 100, x = ?";
 
 
@@ -20,7 +20,7 @@ function twoDigitAddition(problemAmount) {
  * Shortcut for problems of type NNN + NNN
  */
 function threeDigitAddition(problemAmount) {
-    return addition(problemAmount, [0, 1000]);
+    return addition(problemAmount, [100, 1000]);
 }
 
 /**

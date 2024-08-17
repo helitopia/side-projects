@@ -4,7 +4,7 @@ export {randomPart, shuffle, getDigit};
  * Get n random elements of arr
  */
 function randomPart(arr, n) {
-    return shuffle(arr).slice(n ?? 0);
+    return shuffle(arr).slice(0, n ?? 1);
 }
 
 function shuffle(array) {

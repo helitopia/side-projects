@@ -1,5 +1,4 @@
 - Refactor script.js to clean it up a bit
-- Bug - failing script when reached end of problem list
 - Add timer / problems limit settings
 - Add calculations per minute stats
 - Add division

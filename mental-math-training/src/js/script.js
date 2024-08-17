@@ -43,15 +43,18 @@ function defineProblems() {
 
     config.problems = shuffle(totalProblemModes
         .filter(i => checkedInputIds.includes(i.functionHandler.name))
-        .flatMap(i => i.functionHandler()));
+        .flatMap(i => i.functionHandler(Math.floor(config.problemAmountElem.value / checkedInputIds.length))));
 
     updateProblem();
 }
 
 
 function updateProblem() {
-    config.answerInputElem.value = "";
-    let currProblem = config.problems[++config.currentProblemIdx];
+    if (++config.currentProblemIdx === config.problems.length)
+        config.answerInputElem.disabled = true;
+    else
+        config.answerInputElem.value = "";
+    let currProblem = config.problems[config.currentProblemIdx % config.problems.length];
     config.problemContentElem.textContent = currProblem.display();
     config.answerElem.textContent = currProblem.solution
 }
