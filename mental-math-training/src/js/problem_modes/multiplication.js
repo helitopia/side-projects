@@ -1,10 +1,11 @@
 import {getDigit} from "../util.js";
 import {multiplication} from "./common.js";
 
-export {xEleven, nhTimesNm};
+export {xEleven, nhTimesNm, nTimesM};
 
 xEleven.description = "0-99 x 11";
 nhTimesNm.description = "NH x NM, where H + M = 10";
+nTimesM.description = "N x M, both < 10";
 
 
 /**
@@ -24,5 +25,12 @@ function nhTimesNm(problemAmount) {
         [0, 100],
         (x, y) => getDigit(x, 0) === getDigit(y, 0)
             && getDigit(x, 1) + getDigit(y, 1) === 10
+    );
+}
+
+function nTimesM(problemAmount){
+    return multiplication(
+        problemAmount,
+        [2, 10]
     );
 }

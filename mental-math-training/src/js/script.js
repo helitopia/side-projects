@@ -27,7 +27,6 @@ function renderModes() {
 
         input.type = "checkbox";
         input.id = optionHandler.name;
-        // input.checked = true;
         input.addEventListener("change", defineProblems);
         label.htmlFor = input.id;
         label.textContent = optionName;
@@ -35,7 +34,6 @@ function renderModes() {
         config.problemOptionsElem.appendChild(div);
     }
 }
-
 
 function defineProblems() {
     let inputs = config.problemOptionsElem.querySelectorAll("input");
@@ -48,22 +46,39 @@ function defineProblems() {
     updateProblem();
 }
 
-
 function updateProblem() {
-    if (++config.currentProblemIdx === config.problems.length)
+    if (++config.currentProblemIdx === config.problems.length) {
         config.answerInputElem.disabled = true;
-    else
-        config.answerInputElem.value = "";
+        return;
+    }
+
     let currProblem = config.problems[config.currentProblemIdx % config.problems.length];
-    config.problemContentElem.textContent = currProblem.display();
+    let problemDisplay = currProblem.display();
+    config.answerInputElem.value = "";
+    // config.problemContentElem.textContent = problemDisplay;
+    speak(problemDisplay.replace("=", "").replace("-", "minus"));
     config.answerElem.textContent = currProblem.solution
 }
 
 function enableInputValidation() {
     config.answerInputElem.addEventListener("input", d => {
         if (config.answerInputElem.value == config.problems[config.currentProblemIdx].solution) {
-            config.answerInputElem.value = "";
-            updateProblem()
+            setTimeout(() => {
+                config.answerInputElem.value = "";
+                updateProblem()
+            }, 100);
         }
     })
+}
+
+function speak(text) {
+    // Create a SpeechSynthesisUtterance
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    // Select a voice
+    const voices = speechSynthesis.getVoices();
+    utterance.voice = voices[2]; // Choose a specific voice
+
+    // Speak the text
+    speechSynthesis.speak(utterance);
 }
