@@ -1,6 +1,0 @@
-- Refactor script.js to clean it up a bit
-- Add timer / problems limit settings
-- Add calculations per minute stats
-- Add division
-- Unionize all the problem generator function scripts and export them as single object by category
-- introduce problem amount coefficients
