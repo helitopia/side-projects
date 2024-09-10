@@ -1,0 +1,15 @@
+.current-problem-container {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    gap             : 0.5em;
+    font-size       : 2em;
+    font-weight     : bold;
+}
+
+.current-problem-container > .current-problem-solution {
+    all        : inherit;
+    width      : 3em;
+    border     : 1px solid #FFF;
+    text-align : center;
+}
