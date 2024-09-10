@@ -13,3 +13,29 @@
     border     : 1px solid #FFF;
     text-align : center;
 }
+
+.help-container {
+    position       : absolute;
+    top            : 1em;
+    right          : 1em;
+    display        : flex;
+    flex-direction : column;
+    align-items    : end;
+    gap            : 0.5em;
+}
+
+.help-popup {
+    display       : none;
+    border-radius : 1em;
+    background    : #FFF;
+    padding       : 1em;
+    color         : black;
+}
+
+.help-icon {
+    margin : 0.5em;
+}
+
+.help-icon:hover + .help-popup {
+    display : block;
+}
