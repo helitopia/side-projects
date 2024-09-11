@@ -1,6 +1,6 @@
 import './HelpPanel.css'
 
-function HelpPanel() {
+export default function HelpPanel() {
     return (
         <div className='help-container'>
             <div className="help-icon">
@@ -12,7 +12,5 @@ function HelpPanel() {
             </div>
             <div className="help-popup">Ctrl + / -&gt; Open configuration</div>
         </div>
-    )
+    );
 }
-
-export default HelpPanel
