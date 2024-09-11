@@ -10,7 +10,7 @@ export default function HelpPanel() {
                         fill="white"/>
                 </svg>
             </div>
-            <div className="help-popup">Ctrl + / -&gt; Open configuration</div>
+            <div className="help-popup">\ -&gt; Open configuration</div>
         </div>
     );
 }

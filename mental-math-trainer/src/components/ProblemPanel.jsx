@@ -4,6 +4,7 @@ import {useState} from "react";
 export default function ProblemPanel() {
     let [userAnswer, setUserAnswer] = useState("");
     let [problem, setProblem] = useState(generateProblem());
+    
     return (
         <div className='current-problem-container'>
             <div className="current-problem-content">
